@@ -470,7 +470,7 @@ module ActiveRecord
         end
 
         def load_schema
-          return if schema_loaded?
+          return if abstract_class? || schema_loaded?
           @load_schema_monitor.synchronize do
             return if defined?(@columns_hash) && @columns_hash
 
